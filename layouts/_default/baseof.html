@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html id="page" lang="{{ .Site.LanguageCode }}" prefix="og: https://ogp.me/ns#">
+  {{ partial "head.html" . }}
+  <body>
+    <header class="[ navbar ]" id="navbar">
+      <div class="[ wrapper ][ flex between middle ]">
+        <a class="[ logo ]" href="/" title="Home" aria-label="Home" data-prefetch>
+          {{- readFile "static/icons/logo.svg" | safeHTML }}
+        </a>
+        <nav class="[ nav ]">
+          <ul class="[ menu ][ flex ]">
+              <li class="[ menu__item ]">
+                <a class="[ menu__link ]{{ if or (eq .RelPermalink "/blog/") .Params.post }}[ current ]{{ end }}" href="/blog/" data-prefetch>Blog</a>
+              </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="[ main ]{{- if eq .Page.Kind "404" -}}[ error ]{{- end -}}" id="main">
+      {{- block "main" . -}}{{- end -}}
+    </main>
+    {{- partial "footer.html" . -}}
+    <script src="/scripts/app-{{ .Site.Params.Version }}.min.js" defer></script>
+    {{- if or .IsHome ( .Store.Get "hasObscure" ) }}
+    <script src="/scripts/obscure-{{ .Site.Params.Version }}.min.js"></script>
+    {{- end -}}
+    {{- if .Store.Get "hasCode" -}}
+    <script src="/scripts/prism-{{ .Site.Params.Version }}.min.js" defer></script>
+    {{- end -}}
+    {{- if .Store.Get "hasYouTube" -}}
+    <script type="module" src="/scripts/lite-youtube-{{ .Site.Params.Version }}.min.js" defer></script>
+    {{- end -}}
+  </body>
+</html>
