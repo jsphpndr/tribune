@@ -1,20 +1,44 @@
 @use '../abstracts' as *
   
 .navbar
-  background-color: green
   padding:
     top: 1.5em
     bottom: 1em
 
-  > .wrapper
-    height: inherit
-    z-index: 15
+  // > .wrapper
+  //   height: inherit
+  //   z-index: 15
   
-  .logo > svg
-    fill: var(--white)
+  &__logo
+    display: inline-flex
+    width: em(300)
 
-.logo
-  width: em(200)
+  &__info
+    text-align: center
+
+  &__weather
+    display: none
+    text-align: right
+
+  +breakpoint(tablet)
+    &__top
+      grid-template-columns: [info-start] 1fr [info-end branding-start] 1fr [branding-end weather-start] 1fr [weather-end]
+
+    &__branding
+      grid-column: branding
+
+    &__info
+      grid-column: info
+      text-align: left
+
+    &__weather
+      display: block
+      grid-column: weather
+
+.navigation
+
+  &--desktop
+    padding-top: 0.75em
 
 .nav
   height: inherit
@@ -23,8 +47,7 @@
   gap: 2em
 
   &__link
-    text-transform: lowercase
-    color: var(--color)
+    color: var(--black)
     padding: 0.25em 0.5em
     border: 0.2em
     position: relative
@@ -32,12 +55,19 @@
 
     +hover
       color: var(--white)
-      background-color: var(--background)
-
-
+      background-color: var(--black)
 
     &.current
       // color: var(--white)
       background-color: var(--background)
       position: relative      
+
+.line
+  display: block
+  height: em(1)
+  background-color: var(--border)
+
+  &--top
+    margin-bottom: 0.1em
+
 

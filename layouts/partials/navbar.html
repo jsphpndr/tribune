@@ -1,0 +1,47 @@
+<header class="[ navbar ][ full-width content-grid ]" id="navbar">
+  <h1 class="[ hidden ]">The Tribune | The Bahamas' Leader in News, Business, Sports, and Insights</h1>
+  <div class="[ wrapper ]">
+    <!-- Top Section - Start -->
+    <div class="[ navbar__top ][ grid ]">
+
+      <!-- Date & eNewspaper Link -->
+      <div class="[ navbar__info ][ font--small ]">
+        <div class="[ navbar__date ][ font--700 ]">{{ now | dateFormat "Monday, January 2, 2006" }}</div>
+        <a href="#" class="[ navbar__enewspaper-link ]">eNewspaper</a>
+      </div>
+
+      <!-- Logo & Slogan -->
+      <div class="[ navbar__branding ]">
+        <a class="[ navbar__logo ]" href="/" title="Home" aria-label="Home" data-prefetch>
+          {{- readFile "static/icons/logo.svg" | safeHTML }}
+        </a>
+        <!-- <p class="navbar__motto" lang="la">NULLIUS ADDICTUS IURARE IN VERBA MAGISTRI</p> -->
+      </div>
+
+
+      <!-- Weather -->
+      <div class="[ navbar__weather ][ font--small ]">
+        <span class="[ navbar__weather-temp ][ font--700 ]">28°C</span>
+        <!-- <span class="[ navbar__weather-condition ]">Partly Cloudy</span> -->
+      </div>
+
+    </div>
+    <!-- Top Section - End -->
+    <!-- Main Navigation - Start -->
+    <div class="[ navigation--desktop ]">
+      <b class="[ line line--top ]"></b>
+      <b class="[ line ]"></b>
+      <nav class="[ nav ][ flex center ]">
+        <ul class="[ menu ][ flex ]">
+          {{ range $key, $category := .Site.Data.categories }}
+            <li class="[ menu__item ][ font--700 ]">
+              <a class="[ menu__link ]" href="{{ .url }}" data-prefetch>{{ .name }}</a>
+            </li>
+          {{ end }}
+        </ul>
+      </nav>
+      <b class="[ line ]"></b>
+    </div>
+    <!-- Main Navigation - End -->
+  </div>
+</header>

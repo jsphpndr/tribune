@@ -7,7 +7,7 @@ title = 'The Tribune'
 
 upload_dir = "assets/uploads"
 public_path = "/uploads"
-disableKinds = [ "taxonomy", "term" ]
+# disableKinds = [ "taxonomy", "term" ]
 
 [ params ]
   version = "1738220434631"
@@ -25,21 +25,21 @@ disableKinds = [ "taxonomy", "term" ]
     github = "jsphpndr"
     x = "jsphpndr"
 
-# [markup]
-#   [markup.goldmark]
-#     [markup.goldmark.parser]
-#       wrapStandAloneImageWithinParagraph = false
-#       [markup.goldmark.parser.attribute]
-#         block = true
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      wrapStandAloneImageWithinParagraph = false
+      [markup.goldmark.parser.attribute]
+        block = true
 
-#     # Links
-#     [markup.goldmark.renderHooks]
-#       [markup.goldmark.renderHooks.link]
-#         enableDefault = true        
+    # Links
+    [markup.goldmark.renderHooks]
+      [markup.goldmark.renderHooks.link]
+        enableDefault = true        
 
-# enableGitInfo = true
+enableGitInfo = true
 
-# [sitemap]
-#   filename = "sitemap"  # Remove .xml
-#   changefreq = "monthly"
-#   priority = 0.5
+[sitemap]
+  filename = "sitemap"  # Remove .xml
+  changefreq = "monthly"
+  priority = 0.5

@@ -57,7 +57,7 @@
   @content
   /* purgecss ignore */
 
-=padding($value, $prop: null)
+=p($value, $prop: null)
   $side: null
 
   @if $prop == 'top'
@@ -187,3 +187,7 @@
   transition-timing-function: ease-in-out
   transition-property: $properties
   will-change: $properties
+
+=weight($weight)
+  .font--#{$weight}
+    font-weight: $weight

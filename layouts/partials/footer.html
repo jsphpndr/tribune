@@ -1,6 +1,33 @@
-<footer class="[ footer ]">
-  <div>
-    <p class="[ tag-header ]">Find me elsewhere</p>
+<footer class="[ footer full-width content-grid ]">
+  <div class="[ wrapper ][ py--5 ]">
+    <div class="[ grid ]">
+      <a class="[ logo ]" href="/" title="Home" aria-label="Home" data-prefetch>
+        {{- readFile "static/icons/logo.svg" | safeHTML }}
+      </a>
+
+      <p>
+        <small>The Bahamas’ Leading Source for News, Business, Sports, and Insights.</small>
+      </p>
+
+    </div>
+    <nav>
+      <ul>
+        {{ range $key, $category := .Site.Data.categories }}
+          <li>
+            <a href="{{ .url }}">{{ .name }}</a>
+            
+            {{ if .subcategories }}
+              <ul>
+                {{ range .subcategories }}
+                  <li><a href="{{ .url }}">{{ .name }}</a></li>
+                {{ end }}
+              </ul>
+            {{ end }}
+    
+          </li>
+        {{ end }}
+      </ul>
+    </nav>
     <ul class="[ social ][ flex ]">
       <!-- <li class="[ social__item ]">
       <a class="[ social__link ]" href="https://youtube.com/channel/jsphpndr" target="_blank" rel="noopener" aria-label="Follow me on YouTube">

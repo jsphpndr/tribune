@@ -1,0 +1,96 @@
+
+- name: "News"
+  url: "/news"
+  subcategories:
+    - name: "National"
+      url: "/news/national"
+    - name: "Regional"
+      url: "/news/regional"
+    - name: "Politics"
+      url: "/news/politics"
+    - name: "Crime"
+      url: "/news/crime"
+    - name: "Environment"
+      url: "/news/environment"
+
+- name: "Business"
+  url: "/business"
+  subcategories:
+    - name: "Economy"
+      url: "/business/economy"
+    - name: "Finance"
+      url: "/business/finance"
+    - name: "Markets"
+      url: "/business/markets"
+    - name: "Real Estate"
+      url: "/business/real-estate"
+
+- name: "Sports"
+  url: "/sports"
+  subcategories:
+    - name: "Local Sports"
+      url: "/sports/local"
+    - name: "International"
+      url: "/sports/international"
+    - name: "Features"
+      url: "/sports/features"
+
+- name: "Opinion"
+  url: "/opinion"
+  subcategories:
+    - name: "Editorials"
+      url: "/opinion/editorials"
+    - name: "Letters to the Editor"
+      url: "/opinion/letters"
+    - name: "Columns"
+      url: "/opinion/columns"
+
+- name: "Lifestyle"
+  url: "/lifestyle"
+  subcategories:
+    - name: "Arts & Culture"
+      url: "/lifestyle/arts-culture"
+    - name: "Health"
+      url: "/lifestyle/health"
+    - name: "Food & Dining"
+      url: "/lifestyle/food-dining"
+    - name: "Travel"
+      url: "/lifestyle/travel"
+
+# - name: "Entertainment"
+#   url: "/entertainment"
+#   subcategories:
+#     - name: "Celebrity News"
+#       url: "/entertainment/celebrity-news"
+#     - name: "Film & TV"
+#       url: "/entertainment/film-tv"
+#     - name: "Events"
+#       url: "/entertainment/events"
+
+- name: "Classifieds"
+  url: "/classifieds"
+  subcategories:
+    - name: "Jobs"
+      url: "/classifieds/jobs"
+    - name: "Real Estate"
+      url: "/classifieds/real-estate"
+    - name: "Announcements"
+      url: "/classifieds/announcements"
+    - name: "Obituaries"
+      url: "/classifieds/obituaries"
+
+# - name: "Multimedia"
+#   url: "/multimedia"
+#   subcategories:
+#     - name: "Photo Galleries"
+#       url: "/multimedia/photos"
+#     - name: "Videos"
+#       url: "/multimedia/videos"
+#     - name: "Podcasts"
+#       url: "/multimedia/podcasts"
+
+# - name: "E-Paper"
+#   url: "/e-paper"
+
+# - name: "Subscribe"
+#   url: "/subscribe"
