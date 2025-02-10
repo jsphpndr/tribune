@@ -6,15 +6,17 @@
       </a>
 
       <p>
-        <small>The Bahamas’ Leading Source for News, Business, Sports, and Insights.</small>
+        <small>The Tribune is a subsidiary of Tribune Media Group Bahamas' Leading Source for News, Business, Sports, and Insights.</small>
       </p>
 
     </div>
     <nav>
-      <ul>
+      <ul class="'[  ]">
         {{ range $key, $category := .Site.Data.categories }}
           <li>
+            <b class="[ line ]"></b>
             <a href="{{ .url }}">{{ .name }}</a>
+            <b class="[ line ]"></b>
             
             {{ if .subcategories }}
               <ul>
@@ -59,7 +61,7 @@
       </li>
     </ul>
   </div>
-  <div class="[ copy ][ flex ]"><small>© {{ now.Format "2006" }} Joseph Pinder. All rights reserved.</small>
+  <div class="[ copy ][ flex ]"><small>© {{ now.Format "2006" }} Tribune Media Group. All rights reserved.</small>
     <nav> 
       <ul>
         <li> <a class="[ link ]" href="/accessibility-statement"> <small>Accessibility Statement</small></a></li>

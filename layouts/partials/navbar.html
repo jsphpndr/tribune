@@ -1,5 +1,7 @@
 <header class="[ navbar ][ full-width content-grid ]" id="navbar">
-  <h1 class="[ hidden ]">The Tribune | The Bahamas' Leader in News, Business, Sports, and Insights</h1>
+  {{ if .IsHome }}
+  <h1 class="[ hidden ]">The Tribune | The Bahamas' Leader in News, Business, Sport and Comment</h1>
+  {{ end }}
   <div class="[ wrapper ]">
     <!-- Top Section - Start -->
     <div class="[ navbar__top ][ grid ]">

@@ -5,6 +5,7 @@
     {{ partial "navbar.html" . }}
     <main class="[ main ][ full-width content-grid ]{{- if eq .Page.Kind "404" -}}[ error ]{{- end -}}" id="main">
       {{- block "main" . -}}{{- end -}}
+      {{ block "template" . }}{{ end }}
     </main>
     {{- partial "footer.html" . -}}
     <script src="/scripts/app-{{ .Site.Params.Version }}.min.js" defer></script>

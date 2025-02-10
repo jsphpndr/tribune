@@ -2,6 +2,10 @@ baseURL = 'https://tribune242.com/'
 languageCode = 'en-us'
 title = 'The Tribune'
 
+[taxonomies]
+  category = "categories"
+  subcategory = "subcategories"
+
 [sass]
   use_dart_sass = true
 
