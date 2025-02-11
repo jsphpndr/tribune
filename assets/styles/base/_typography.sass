@@ -6,7 +6,7 @@ h1, h2, h3, h4, h5, h6
   padding-bottom: 0.25em
   
   a
-    color: inherit
+    color: currentcolor
     font-weight: inherit
 
 
@@ -32,13 +32,13 @@ p
   padding-bottom: 1em
   
 a:not([class])
-  color: var(--white)
-  border-bottom: em(2) solid var(--white)
-  +transition('color, background-color')
+  // color: var(--white)
+  border-bottom: em(2) solid var(--black)
+  +transition([color, background-color])
 
   +hover
-    color: var(--black)
-    background-color: var(--white)
+    color: var(--white)
+    background-color: var(--black)
 
 small, figcaption, .font--small
   font-size: var(--step--1)

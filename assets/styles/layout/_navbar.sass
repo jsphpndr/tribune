@@ -11,7 +11,8 @@
   
   &__logo
     display: inline-flex
-    width: em(300)
+    +fluid('width', 200, 300)
+
 
   &__info
     text-align: center
@@ -20,12 +21,19 @@
     display: none
     text-align: right
 
+  @media(max-width: 767px)
+
+    &__info
+      order: 2
+
   +breakpoint(tablet)
     &__top
       grid-template-columns: [info-start] 1fr [info-end branding-start] 1fr [branding-end weather-start] 1fr [weather-end]
 
     &__branding
       grid-column: branding
+      display: flex
+      justify-content: center
 
     &__info
       grid-column: info

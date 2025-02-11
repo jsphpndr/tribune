@@ -1,11 +1,18 @@
 {{ define "main" }}
-<article>
-  <h1>{{ .Title }}</h1>
-  {{ range .Pages }}
-  <li>
-    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-    <p>{{ .Summary }}</p>
-  </li>
-  {{ end }}
-</article>
+  <div>
+    <h1>{{ .Title }}</h1>
+  
+    <section>
+      <h3 class="[ slab__subcategory ]"></h3>
+      {{ range .Pages }}
+      <!-- <ul class="[ slab ]">
+        <li >
+          <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+          <p>{{ .Summary }}</p>
+        </li>
+      </ul> -->
+      {{ end }}
+    </section>
+
+  </div>
 {{ end }}
