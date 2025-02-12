@@ -2,11 +2,8 @@
 <article class="[ post-single ]">
   <div class="[ post-single__header ]">
     <h1>{{ .Title }}</h1>
-    <p class="[ summary ]">{{ .Summary }}</p>
-    <div class="[ meta ]">
-      <time class="[ font--small ]" datetime="2008-02-14 20:00">November 15, 2024</time><small>Joseph Pinder</small>
-    </div>
-    <figure class="[ pb--2 ]">
+    <p class="[ summary ][ font--3 ]">{{ .Summary }}</p>
+    <!-- <figure class="[ pb--2 ]">
       <picture class="[ bg ]">
         <style>picture { background-image: url('https://clvrmktg.twic.pics/home/smiling-woman-drinking-coffee.jpg?twic=v1/output=preview'); }</style>
         <img data-twic-src="image:home/smiling-woman-drinking-coffee.jpg" data-twic-focus="auto" alt="" width="683" height="385"/>
@@ -14,9 +11,14 @@
         <img class="[ script ]" src="https://clvrmktg.twic.pics/home/smiling-woman-drinking-coffee.jpg?twic=v1/output=preview"/></noscript>
       </picture>
       <figcaption class="[ pt--0.5 ]">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae voluptas quisquam sapiente, culpa voluptatem iure similique vel. Tenetur, qui! Accusantium assumenda fuga magni. Eaque, voluptates!</figcaption>
-    </figure>
+    </figure> -->
+    <div class="[ meta ][ sans-serif font--small ]">
+      <b class="[ line ]"></b>
+      <span>By <a href="">Neil Hartnell</a> | Tribune Business Editor      </span>
+      <time datetime="2008-02-14 20:00">November 15, 2024</time>
+    </div>
   </div>
-  <div class="[ content ]">
+  <div class="[ content ][ font--4 ]">
     {{ .Content }}
   </div>
   <!-- 

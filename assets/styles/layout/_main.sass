@@ -1,68 +1,30 @@
 @use '../abstracts' as *
 
-// @view-transition
-//   navigation: auto
-
-// ::view-transition-group(*)
-//   animation-duration: 700ms
-
-// .navbar
-//   view-transition-name: --navbar
-
 body
   height: 100svh
   display: grid
-  // grid-template-columns: minmax(1em, 1fr) [navbar-start main-start footer-start] minmax(#{em(200)}, #{em(1200)}) [navbar-end main-end footer-end] minmax(1em, 1fr)
-  grid-template-columns: [navbar-start main-start footer-start] 1fr [navbar-end main-end footer-end]
   grid-template-rows: [ navbar-start ] max-content [ navbar-end main-start ] 1fr [main-end footer-start] max-content [footer-end]
   row-gap: 3em
-  
   
   @supports not (height: 100vh)
     height: 100vh
 
 .navbar
-  grid-area: navbar
+  grid-row: navbar
 
 .main
-  grid-area: main
+  grid-row: main
 
 .footer
-  grid-area: footer
+  grid-row: footer
 
-.flex
-  display: flex
-
-.between
-  justify-content: space-between
-
-.center
-  justify-content: center
-
-.middle
-  align-items: center
-
-.main 
-  display: grid
-  grid-template-rows: max-content
-  gap: 2em
-
-  > header
-    display: inherit
-    gap: 0.5em
-
-  > .profile
-    gap: 2em
-
-.grid
-  display: grid
 
 // https://ryanmulligan.dev/blog/layout-breakouts/
 
 .content-grid
   --padding-inline: 1em
-  --content-max-width: 70ch
-  --breakout-max-width: 85ch
+  --content-max-width: #{rem(1050)}
+  --breakout-max-width: #{rem(1200)}
 
   --content-size: min(100% - (var(--padding-inline) * 2), var(--content-max-width))
   --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2)
@@ -81,7 +43,7 @@ body
   > :not(.breakout, .full-width)
     grid-column: content
 
-    
+
 
 +p(5, 'y')
 

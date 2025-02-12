@@ -1,21 +1,30 @@
 @use 'abstracts' as *
 
+
+
 .post-single
   display: grid
+  grid-template-columns: 1fr [post-start] minmax(0, #{em(700)}) [post-end] 1fr
   row-gap: 3em
 
   > footer
     display: inherit
     row-gap: inherit
 
-.content
+.post-single__header, .content
+  grid-column: post
 
+.summary
+  color: var(--content-tertiary)
+  // line-height: 1.5
+
+.content
   figure
     margin-bottom: 1em
 
 .meta
-  color: var(--color)
   padding-bottom: 0
+  column-gap: 0.2em
 
   &--spaced
     padding-bottom: 1em
