@@ -3,16 +3,9 @@
 @use 'variables' as *
 @use 'functions' as *
 
-// Interpolation Mixin
-// =interpolate($property, $min-size, $max-size, $min-vw, $max-vw)
-//   #{$property}: clamp($min-size, calc-interpolation($min-vw, $min-size, $max-vw, $max-size), $max-size)
-
-// Fluid Mixin
-// =fluid($property, $sm, $lg)
-//   +interpolate($property, m($sm), d($lg), m($min-screen-size), d($max-screen-size))
+// Clamp Mixin
 =clamp($property, $min, $max)
   #{$property}: clamp(#{rem($min)}, calc(#{$slope * 100}vw + #{$intercept}rem), #{rem($max)})
-
 
 =breakpoint($size)
   @if $size == phone

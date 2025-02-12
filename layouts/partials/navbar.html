@@ -15,7 +15,12 @@
       <!-- Logo & Slogan -->
       <div class="[ navbar__branding ]">
         <a class="[ navbar__logo ]" href="/" title="Home" aria-label="Home" data-prefetch>
-          {{- readFile "static/icons/logo.svg" | safeHTML }}
+          <span class="[ desktop ]">
+            {{- readFile "static/icons/logo.svg" | safeHTML }}
+          </span>
+          <span class="[ mobile ]">
+            {{- readFile "static/icons/favicon-dark.svg" | safeHTML }}
+          </span>
         </a>
         <!-- <p class="navbar__motto" lang="la">NULLIUS ADDICTUS IURARE IN VERBA MAGISTRI</p> -->
       </div>
@@ -30,7 +35,7 @@
     </div>
     <!-- Top Section - End -->
     <!-- Main Navigation - Start -->
-    <div class="[ navigation--desktop ]">
+    <div class="[ navigation ]">
       <b class="[ line line--top ]"></b>
       <b class="[ line ]"></b>
       <nav class="[ nav ][ flex center ]">

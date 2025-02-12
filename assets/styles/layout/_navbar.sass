@@ -11,7 +11,10 @@
   
   &__logo
     display: inline-flex
-    // +fluid('width', 200, 300)
+    +clamp(width, 200, 300)
+
+    @media(max-width: #{em(800)})
+      +clamp(width, 30,50)  
 
 
   &__info
@@ -21,7 +24,6 @@
     display: none
     text-align: right
 
-  @media(max-width: 767px)
 
     &__info
       order: 2
@@ -43,10 +45,27 @@
       display: block
       grid-column: weather
 
-.navigation
+  &__branding
+    @media(max-width: #{em(800)})
+      background-color: var(--black)
+.mobile
+  display: none
 
-  &--desktop
-    padding-top: 0.75em
+  @media(max-width: #{em(800)})
+    display: inherit
+
+.desktop
+
+  @media(max-width: #{em(800)})
+    display: none
+
+
+.navigation
+  padding-top: 0.75em
+
+  @media(max-width: #{em(800)})
+    display: none
+    visibility: hidden
 
 .nav
   height: inherit
@@ -60,7 +79,7 @@
     padding: 0.25em 0.5em
     border: 0.2em
     position: relative
-    +transition('color')
+    +transition([color, background-color])
 
     +hover
       color: var(--white)
