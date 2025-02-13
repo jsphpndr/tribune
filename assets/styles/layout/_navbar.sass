@@ -5,17 +5,16 @@
     top: 1.5em
     bottom: 1em
 
-  // > .wrapper
-  //   height: inherit
-  //   z-index: 15
-  
   &__logo
-    display: inline-flex
-    +clamp(width, 200, 300)
+    display: flex
+    width: min(#{rem(200)}, #{rem(300)})
+    // +clamp(max-width, 200, 300)
+
+    > span
+      width: inherit
 
     @media(max-width: #{em(800)})
       +clamp(width, 30,50)  
-
 
   &__info
     text-align: center
@@ -23,7 +22,6 @@
   &__weather
     display: none
     text-align: right
-
 
     &__info
       order: 2
@@ -34,8 +32,11 @@
 
     &__branding
       grid-column: branding
-      display: flex
-      justify-content: center
+      display: grid
+      grid-template-columns: 1fr [desktop-start] minmax(#{rem(200)},#{rem(300)}) [desktop-end] 1fr
+
+    &__logo
+      grid-column: desktop
 
     &__info
       grid-column: info
@@ -48,16 +49,17 @@
   &__branding
     @media(max-width: #{em(800)})
       background-color: var(--black)
+
 .mobile
   display: none
 
   @media(max-width: #{em(800)})
-    display: inherit
+    display: inline-flex
 
 .desktop
 
   @media(max-width: #{em(800)})
-    display: none
+    display: inline-flex
 
 
 .navigation
@@ -71,15 +73,19 @@
   height: inherit
 
 .menu
-  gap: 2em
+  column-gap: 1em
   padding: 0.25em 0
-
+  
+  +breakpoint(tablet)
+    width: em(700)
+    justify-content: space-between
+    
   &__link
     color: var(--black)
-    padding: 0.25em 0.5em
+    padding: 0.25em 0
     border: 0.2em
     position: relative
-    +transition([color, background-color])
+    +transition((color, background-color))
 
     +hover
       color: var(--white)

@@ -27,7 +27,7 @@ $intercept: intercept($min-font, $slope, $min-vw)
 
 // Mobile
 @function rem($m)
-  @return #{math.div($m, 16)}rem
+  @return #{math.div($m, $max-font-size)}rem
 
 // Ems
 @function em($em)
