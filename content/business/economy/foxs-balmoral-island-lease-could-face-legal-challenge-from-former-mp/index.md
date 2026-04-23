@@ -1,13 +1,16 @@
 +++
 date = '2025-02-10T10:49:21-05:00'
 draft = false
+cms = 'article'
 title = "Fox's Balmoral Island Lease Could Face Legal Challenge From Former MP"
 summary = "Former Cabinet minister Damian Gomez KC is considering legal action against the Bahamian government's decision to lease a portion of Balmoral Island to Adrian Fox for a proposed $300 million resort project."
+aliases = ['/news/national/foxs-balmoral-island-lease-could-face-legal-challenge-from-former-mp/']
 
 dateline = "Nassau, NP"
 
-categories = ['News']
-subacategories = ['National']
+categories = ['Business']
+authors = ['Neil Hartnell']
+subcategory = 'economy'
 
 [author]
   title = 'Neil Hartnell'

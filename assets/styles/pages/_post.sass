@@ -29,6 +29,23 @@
   &--spaced
     padding-bottom: 1em
 
+.post-taxonomies
+  display: flex
+  flex-wrap: wrap
+  gap: 0.5em
+
+  > a
+    color: var(--white)
+    background-color: var(--background)
+    border: em(1) solid var(--border)
+    border-radius: 100vw
+    padding: 0.25em 0.65em
+    +transition('background-color, border-color')
+
+    +hover
+      background-color: var(--black)
+      border-color: var(--content-tertiary)
+
 .blockquote
   padding:
     top: 1em
@@ -78,6 +95,5 @@
 
 lite-youtube
   margin-bottom: 1em
-
 
 

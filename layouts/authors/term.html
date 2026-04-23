@@ -1,0 +1,55 @@
+{{ define "main" }}
+  <article class="[ author-profile ]">
+    <header class="[ author-profile__header ]">
+      <div class="[ author-profile__media ]">
+        {{ with .Params.photo }}
+          <img src="{{ . }}" alt="{{ $.Title }}">
+        {{ else }}
+          <span aria-hidden="true">{{ substr .Title 0 1 }}</span>
+        {{ end }}
+      </div>
+
+      <div class="[ author-profile__intro ]">
+        {{ with .Params.role }}<p class="[ eyebrow ][ sans-serif ]">{{ . }}</p>{{ end }}
+        <h1>{{ .Title }}</h1>
+        {{ with .Content }}
+          <div class="[ author-profile__bio ]">
+            {{ . }}
+          </div>
+        {{ end }}
+        {{ if or .Params.email .Params.x }}
+        <ul class="[ author-profile__contact ][ sans-serif ]">
+          {{ with .Params.email }}
+            <li><a href="mailto:{{ . }}">Email</a></li>
+          {{ end }}
+          {{ with .Params.x }}
+            {{ $handle := strings.TrimPrefix "@" . }}
+            <li><a href="https://x.com/{{ $handle }}" target="_blank" rel="noopener">X @{{ $handle }}</a></li>
+          {{ end }}
+        </ul>
+      {{ end }}
+      </div>
+    </header>
+
+    <section class="[ author-profile__articles ]">
+      <div class="[ section-heading ]">
+        <h2>Latest Articles</h2>
+        <p class="[ sans-serif ]">{{ len .Pages }} {{ cond (eq (len .Pages) 1) "article" "articles" }}</p>
+      </div>
+
+      <ul class="[ author-articles ]">
+        {{ range .Pages.ByDate.Reverse }}
+          <li>
+            <a href="{{ .RelPermalink }}" class="[ author-article ]">
+              <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" class="[ sans-serif ]">
+                {{ .Date.Format "January 2, 2006" }}
+              </time>
+              <h3 class="[ font--2 ]">{{ .Title }}</h3>
+              <p>{{ .Summary }}</p>
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
+  </article>
+{{ end }}

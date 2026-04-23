@@ -15,8 +15,31 @@
     <div class="[ meta ][ sans-serif font--small ]">
       <b class="[ line ]"></b>
       <p class="[ grid ]">
-        {{ with .Params.author }}
-          <span>By <a href="#" rel="author">{{ .title }}</a> | {{ .role }}</span>
+        {{ $categoryPage := .FirstSection }}
+        {{ $subcategoryPage := .Parent }}
+        {{ if $categoryPage }}
+          <span class="[ post-taxonomies ]">
+            <a href="{{ $categoryPage.RelPermalink }}">{{ $categoryPage.Title }}</a>
+            {{ if and $subcategoryPage (eq $subcategoryPage.Kind "section") (ne $subcategoryPage.RelPermalink $categoryPage.RelPermalink) }}
+              <a href="{{ $subcategoryPage.RelPermalink }}">{{ $subcategoryPage.Title }}</a>
+            {{ end }}
+          </span>
+        {{ end }}
+
+        {{ $authorTerms := .GetTerms "authors" }}
+        {{ if or .Params.author $authorTerms }}
+          <span>By
+            {{ with $authorTerms }}
+              {{ with index . 0 }}<a href="{{ .RelPermalink }}" rel="author">{{ .LinkTitle }}</a>{{ end }}
+            {{ else }}
+              {{ .Params.author.title }}
+            {{ end }}
+            {{ with $authorTerms }}
+              {{ with index . 0 }}{{ with .Params.role }} | {{ . }}{{ end }}{{ end }}
+            {{ else }}
+              {{ with .Params.author.role }} | {{ . }}{{ end }}
+            {{ end }}
+          </span>
         {{ end }}
       
         <span>

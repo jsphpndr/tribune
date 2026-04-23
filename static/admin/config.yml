@@ -1,0 +1,555 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+publish_mode: editorial_workflow
+
+site_url: /
+display_url: /
+logo_url: /icons/logo.svg
+
+media_folder: static/uploads
+public_folder: /uploads
+
+collections:
+  - name: authors
+    label: Authors
+    label_singular: Author
+    folder: content/authors
+    create: true
+    extension: md
+    format: toml-frontmatter
+    path: "{{slug}}/_index"
+    preview_path: "/authors/{{slug}}/"
+    summary: "{{title}}"
+    fields:
+      - { label: Name, name: title, widget: string }
+      - { label: Role, name: role, widget: string }
+      - { label: Photo, name: photo, widget: image, required: false }
+      - { label: Email, name: email, widget: string, required: false }
+      - { label: X Handle, name: x, widget: string, required: false, hint: Enter the handle without @. }
+      - { label: Bio, name: body, widget: markdown, required: false }
+
+  - name: news_articles
+    label: News Articles
+    label_singular: News Article
+    folder: content/news
+    create: true
+    filter:
+      field: cms
+      value: article
+    extension: md
+    format: toml-frontmatter
+    path: "{{subcategory}}/{{slug}}/index"
+    preview_path: "/news/{{subcategory}}/{{slug}}/"
+    summary: "{{title}}"
+    sortable_fields:
+      - date
+      - title
+      - author.title
+    view_groups:
+      - label: Category
+        field: categories
+      - label: Subcategory
+        field: subcategory
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: CMS Type
+        name: cms
+        widget: hidden
+        default: article
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: false
+      - label: Summary
+        name: summary
+        widget: text
+      - label: Dateline
+        name: dateline
+        widget: string
+        required: false
+      - label: Category
+        name: categories
+        widget: select
+        multiple: true
+        min: 1
+        default:
+          - News
+        options:
+          - News
+        disabled: true
+      - label: Subcategory
+        name: subcategory
+        widget: select
+        default: national
+        options:
+          - { label: National, value: national }
+          - { label: Regional, value: regional }
+          - { label: Politics, value: politics }
+          - { label: Crime, value: crime }
+          - { label: Environment, value: environment }
+      - label: Author
+        name: authors
+        widget: relation
+        collection: authors
+        search_fields:
+          - title
+          - role
+        value_field: title
+        display_fields:
+          - title
+          - role
+        multiple: true
+        min: 1
+        max: 1
+      - label: Body
+        name: body
+        widget: markdown
+
+  - name: business_articles
+    label: Business Articles
+    label_singular: Business Article
+    folder: content/business
+    create: true
+    filter:
+      field: cms
+      value: article
+    extension: md
+    format: toml-frontmatter
+    path: "{{subcategory}}/{{slug}}/index"
+    preview_path: "/business/{{subcategory}}/{{slug}}/"
+    summary: "{{title}}"
+    sortable_fields:
+      - date
+      - title
+      - authors
+    view_groups:
+      - label: Subcategory
+        field: subcategory
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: CMS Type
+        name: cms
+        widget: hidden
+        default: article
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: false
+      - label: Summary
+        name: summary
+        widget: text
+      - label: Dateline
+        name: dateline
+        widget: string
+        required: false
+      - label: Category
+        name: categories
+        widget: select
+        multiple: true
+        min: 1
+        default:
+          - Business
+        options:
+          - Business
+        disabled: true
+      - label: Subcategory
+        name: subcategory
+        widget: select
+        default: economy
+        options:
+          - { label: Economy, value: economy }
+          - { label: Finance, value: finance }
+          - { label: Markets, value: markets }
+          - { label: Real Estate, value: real-estate }
+      - label: Author
+        name: authors
+        widget: relation
+        collection: authors
+        search_fields:
+          - title
+          - role
+        value_field: title
+        display_fields:
+          - title
+          - role
+        multiple: true
+        min: 1
+        max: 1
+      - label: Body
+        name: body
+        widget: markdown
+
+  - name: sports_articles
+    label: Sports Articles
+    label_singular: Sports Article
+    folder: content/sports
+    create: true
+    filter:
+      field: cms
+      value: article
+    extension: md
+    format: toml-frontmatter
+    path: "{{subcategory}}/{{slug}}/index"
+    preview_path: "/sports/{{subcategory}}/{{slug}}/"
+    summary: "{{title}}"
+    sortable_fields:
+      - date
+      - title
+      - authors
+    view_groups:
+      - label: Subcategory
+        field: subcategory
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: CMS Type
+        name: cms
+        widget: hidden
+        default: article
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: false
+      - label: Summary
+        name: summary
+        widget: text
+      - label: Dateline
+        name: dateline
+        widget: string
+        required: false
+      - label: Category
+        name: categories
+        widget: select
+        multiple: true
+        min: 1
+        default:
+          - Sports
+        options:
+          - Sports
+        disabled: true
+      - label: Subcategory
+        name: subcategory
+        widget: select
+        default: local
+        options:
+          - { label: Local Sports, value: local }
+          - { label: International, value: international }
+          - { label: Features, value: features }
+      - label: Author
+        name: authors
+        widget: relation
+        collection: authors
+        search_fields:
+          - title
+          - role
+        value_field: title
+        display_fields:
+          - title
+          - role
+        multiple: true
+        min: 1
+        max: 1
+      - label: Body
+        name: body
+        widget: markdown
+
+  - name: opinion_articles
+    label: Opinion Articles
+    label_singular: Opinion Article
+    folder: content/opinion
+    create: true
+    filter:
+      field: cms
+      value: article
+    extension: md
+    format: toml-frontmatter
+    path: "{{subcategory}}/{{slug}}/index"
+    preview_path: "/opinion/{{subcategory}}/{{slug}}/"
+    summary: "{{title}}"
+    sortable_fields:
+      - date
+      - title
+      - authors
+    view_groups:
+      - label: Subcategory
+        field: subcategory
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: CMS Type
+        name: cms
+        widget: hidden
+        default: article
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: false
+      - label: Summary
+        name: summary
+        widget: text
+      - label: Dateline
+        name: dateline
+        widget: string
+        required: false
+      - label: Category
+        name: categories
+        widget: select
+        multiple: true
+        min: 1
+        default:
+          - Opinion
+        options:
+          - Opinion
+        disabled: true
+      - label: Subcategory
+        name: subcategory
+        widget: select
+        default: editorials
+        options:
+          - { label: Editorials, value: editorials }
+          - { label: Letters to the Editor, value: letters }
+          - { label: Columns, value: columns }
+      - label: Author
+        name: authors
+        widget: relation
+        collection: authors
+        search_fields:
+          - title
+          - role
+        value_field: title
+        display_fields:
+          - title
+          - role
+        multiple: true
+        min: 1
+        max: 1
+      - label: Body
+        name: body
+        widget: markdown
+
+  - name: lifestyle_articles
+    label: Lifestyle Articles
+    label_singular: Lifestyle Article
+    folder: content/lifestyle
+    create: true
+    filter:
+      field: cms
+      value: article
+    extension: md
+    format: toml-frontmatter
+    path: "{{subcategory}}/{{slug}}/index"
+    preview_path: "/lifestyle/{{subcategory}}/{{slug}}/"
+    summary: "{{title}}"
+    sortable_fields:
+      - date
+      - title
+      - authors
+    view_groups:
+      - label: Subcategory
+        field: subcategory
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: CMS Type
+        name: cms
+        widget: hidden
+        default: article
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: false
+      - label: Summary
+        name: summary
+        widget: text
+      - label: Dateline
+        name: dateline
+        widget: string
+        required: false
+      - label: Category
+        name: categories
+        widget: select
+        multiple: true
+        min: 1
+        default:
+          - Lifestyle
+        options:
+          - Lifestyle
+        disabled: true
+      - label: Subcategory
+        name: subcategory
+        widget: select
+        default: arts-culture
+        options:
+          - { label: Arts & Culture, value: arts-culture }
+          - { label: Health, value: health }
+          - { label: Food & Dining, value: food-dining }
+          - { label: Travel, value: travel }
+      - label: Author
+        name: authors
+        widget: relation
+        collection: authors
+        search_fields:
+          - title
+          - role
+        value_field: title
+        display_fields:
+          - title
+          - role
+        multiple: true
+        min: 1
+        max: 1
+      - label: Body
+        name: body
+        widget: markdown
+
+  - name: classifieds_articles
+    label: Classifieds Articles
+    label_singular: Classifieds Article
+    folder: content/classifieds
+    create: true
+    filter:
+      field: cms
+      value: article
+    extension: md
+    format: toml-frontmatter
+    path: "{{subcategory}}/{{slug}}/index"
+    preview_path: "/classifieds/{{subcategory}}/{{slug}}/"
+    summary: "{{title}}"
+    sortable_fields:
+      - date
+      - title
+      - authors
+    view_groups:
+      - label: Subcategory
+        field: subcategory
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: CMS Type
+        name: cms
+        widget: hidden
+        default: article
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: false
+      - label: Summary
+        name: summary
+        widget: text
+      - label: Dateline
+        name: dateline
+        widget: string
+        required: false
+      - label: Category
+        name: categories
+        widget: select
+        multiple: true
+        min: 1
+        default:
+          - Classifieds
+        options:
+          - Classifieds
+        disabled: true
+      - label: Subcategory
+        name: subcategory
+        widget: select
+        default: jobs
+        options:
+          - { label: Jobs, value: jobs }
+          - { label: Real Estate, value: real-estate }
+          - { label: Announcements, value: announcements }
+          - { label: Obituaries, value: obituaries }
+      - label: Author
+        name: authors
+        widget: relation
+        collection: authors
+        search_fields:
+          - title
+          - role
+        value_field: title
+        display_fields:
+          - title
+          - role
+        multiple: true
+        min: 1
+        max: 1
+      - label: Body
+        name: body
+        widget: markdown
+
+  - name: pages
+    label: Pages
+    files:
+      - label: Homepage
+        name: home
+        file: content/_index.md
+        extension: md
+        format: toml-frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Date, name: date, widget: datetime }
+          - { label: Draft, name: draft, widget: boolean, default: false }
+          - { label: Description, name: description, widget: text, required: false }
+          - { label: Body, name: body, widget: markdown, required: false }
+      - label: National News
+        name: national_news
+        file: content/news/national/_index.md
+        extension: md
+        format: toml-frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Date, name: date, widget: datetime }
+          - { label: Draft, name: draft, widget: boolean, default: false }
+          - { label: Type, name: type, widget: hidden, default: subcategory }
+          - { label: Body, name: body, widget: markdown, required: false }
+      - label: Local News
+        name: local_news
+        file: content/news/local/_index.md
+        extension: md
+        format: toml-frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Date, name: date, widget: datetime }
+          - { label: Draft, name: draft, widget: boolean, default: false }
+          - { label: Type, name: type, widget: hidden, default: subcategory }
+          - { label: Body, name: body, widget: markdown, required: false }
+      - label: International News
+        name: international_news
+        file: content/news/international/_index.md
+        extension: md
+        format: toml-frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Date, name: date, widget: datetime }
+          - { label: Draft, name: draft, widget: boolean, default: false }
+          - { label: Type, name: type, widget: hidden, default: subcategory }
+          - { label: Body, name: body, widget: markdown, required: false }

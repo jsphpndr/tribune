@@ -3,13 +3,13 @@ languageCode = 'en-us'
 title = 'The Tribune'
 
 [taxonomies]
+  author = "authors"
   category = "categories"
-  subcategory = "subcategories"
 
 [sass]
   use_dart_sass = true
 
-upload_dir = "assets/uploads"
+upload_dir = "static/uploads"
 public_path = "/uploads"
 # disableKinds = [ "taxonomy", "term" ]
 
