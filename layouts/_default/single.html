@@ -15,8 +15,31 @@
     <div class="[ meta ][ sans-serif font--small ]">
       <b class="[ line ]"></b>
       <p class="[ grid ]">
-        <span>By <a href="#" rel="author">Neil Hartnell</a> | Tribune Business Editor</span>
-        <time datetime="2008-02-14 20:00">November 15, 2024</time>
+        {{ with .Params.author }}
+          <span>By <a href="#" rel="author">{{ .title }}</a> | {{ .role }}</span>
+        {{ end }}
+      
+        <span>
+          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+            {{ .Date.Format "January 2, 2006" }}
+          </time>
+      
+          {{ if ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") }}
+            <span>
+              Updated
+              <time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+                {{ .Lastmod.Format "January 2, 2006 at 3:04 PM MST" }}
+              </time>
+            </span>
+          {{ else if ne .Lastmod .Date }}
+            <span>
+              Updated
+              <time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+                {{ .Lastmod.Format "3:04 PM MST" }}
+              </time>
+            </span>
+          {{ end }}
+        </span>
       </p>
     </div>
   </div>

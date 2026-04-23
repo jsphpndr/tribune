@@ -15,21 +15,18 @@
   --code-color: rgb(155, 157, 157)
   --code-background: rgb(35, 35, 35)
   --monospace: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace
+
+  --serif: system-serif, serif
+  --sans-serif: system-ui, sans-serif
+
   $headings: (h1: 6, h2: 3, h3: 2, h4: 1, h5: 0, h6: -1)
 
   @each $tag, $step in $headings
     $min-size: type-scale($step, $min-font-size, $min-scale)
     $max-size: type-scale($step, $max-font-size, $max-scale)
 
+    // @debug "Step: #{$step}, Min Size: #{$min-size}, Max Size: #{$max-size}"
     +clamp('--step-#{$step}', $min-size, $max-size)
-  // --step--2: clamp(0.64rem, 0.7403rem + -0.2292vw, 0.6944rem)
-  // --step--1: clamp(0.8rem, 0.8614rem + -0.1404vw, 0.8333rem)
-  // --step-0: clamp(1rem, 1rem + 0vw, 1rem)
-  // --step-1: clamp(1.2rem, 1.1579rem + 0.2105vw, 1.25rem)
-  // --step-2: clamp(1.44rem, 1.3368rem + 0.5158vw, 1.5625rem)
-  // --step-3: clamp(1.728rem, 1.5384rem + 0.9479vw, 1.9531rem)
-  // --step-4: clamp(2.0736rem, 1.7639rem + 1.5487vw, 2.4414rem)
-  // --step-5: clamp(2.4883rem, 2.0138rem + 2.3724vw, 3.0518rem)
 
   // Content Colors
 
@@ -45,8 +42,7 @@ html
   -webkit-tap-highlight-color: rgba(black, 0)
   scroll-behavior: smooth
   scroll-padding-top: 10em
-  // +interpolate(font-size, $min-font-size-in-px, $max-font-size-in-px, $min-viewport-width-in-px, $max-viewport-width-in-px)
-  +clamp(font-size, $min-font-size, $max-font-size)
+  
 
 html, body
   overflow-x: hidden
@@ -54,14 +50,13 @@ html, body
 
 body
   width: 100%
-  font:
-    family: system-serif
-    weight: 400
+  font: var(--step-0) / 1.5 var(--serif)
+  font-weight: 400
   line-height: 1.6
   overflow-x: hidden
 
 .sans-serif
-  font-family: system-ui, sans-serif
+  font-family: var(--sans-serif)
 
 body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd
   margin: 0

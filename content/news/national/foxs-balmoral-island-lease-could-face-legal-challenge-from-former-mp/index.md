@@ -4,6 +4,8 @@ draft = false
 title = "Fox's Balmoral Island Lease Could Face Legal Challenge From Former MP"
 summary = "Former Cabinet minister Damian Gomez KC is considering legal action against the Bahamian government's decision to lease a portion of Balmoral Island to Adrian Fox for a proposed $300 million resort project."
 
+dateline = "Nassau, NP"
+
 categories = ['News']
 subacategories = ['National']
 

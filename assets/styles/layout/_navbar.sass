@@ -6,8 +6,9 @@
     bottom: 1em
 
   &__logo
-    display: flex
-    width: min(#{rem(200)}, #{rem(300)})
+    display: inline-block
+    // +clamp(width, 200, 300)
+    margin-inline: auto
     // +clamp(max-width, 200, 300)
 
     > span
